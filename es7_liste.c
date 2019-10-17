@@ -13,9 +13,9 @@ student *add(student *h, student *s) {
 
 }
 
+// rimuove studente in testa
 // ritorna testa della nuova lista
 // primo parametro riferimento a testa lista attuale
-// secondo parametro riferimento a studente da rimuovere
-student *remove(student *h, student *s) {
+student *remove(student *h) {
 
 }
