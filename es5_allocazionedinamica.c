@@ -4,8 +4,11 @@
 // malloc usa globale errno in lib per comunicare a chiamante l'errore di out of memory (ENOMEM) o superato il limite di un certo valore di memoria (RLIMIT_AS o RLIMIT_DATA)
 // implementazione malloc in es3
 #include <stdlib.h>
+
+// gestione errori
+#include <errno.h>
 int main() {
-    int *buf;  // puntatore generico (void *)
+    int *buf;   // puntatore generico (void *)
                 // puntatere int (int *)
     int len = 438;
 
@@ -29,8 +32,14 @@ int main() {
 
         // il programmatore é responsabile del rilasciamento di memoria
         // la memoria se non rilasciata rimane allocata fino alla fine dell'esecuzione del programma
+        // possibili memory leak se non si rilasciano le variabili
         free(buf);
     } else {
+        // gestione errore
 
+        // out of memory
+        if(errno == ENOMEM) {
+            
+        }
     }
 }
