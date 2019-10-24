@@ -3,10 +3,12 @@
 // int open(const char *pathname, int flags)
 // uso file descriptor in programma per interagire con il file per operazioni di lettura, scrittura e riposizionamento
 
-// valori file descriptor aperti automaticamente da unix all'avvio del programma
-// 0 stdin, flusso di input
-// 1 stdout, flusso di output
-// 2 stderr, finestra testuale della shell, usato per errori
+// valori file descriptor aperti automaticamente da unix all'avvio del programma per mappatura con dispositivo esterno
+// posso cambiare mappatura ad altri file o dispositivi
+// inizializzati in lib
+// 0 stdin, standard input, flusso di input da tastiera
+// 1 stdout, standard output, flusso di output a schermo
+// 2 stderr, standard error output, finestra testuale della shell, flusso output errori a schermo
 
 // valori dopo vengono settati all'apertura di ulteriori file
 // valori simbolici di maschere da usare per definire accesso a file in secondo parametro
@@ -41,7 +43,7 @@ int fd = open({str pathname}, O_RDONLY | O_APPEND);
 // terzo parametro numero di byte da leggere
 // offset viene incrementato in base al terzo parametro o numero di byte in file se minore di count
 
-// esempio lettura
+// esempio lettura e stampa di valori letti
 char buf[512];
 int n = read(fd, buf, 512); // se riesce a leggerli tutti n verrá valorizzato anche a 512
                             // in buf verranno salvati i 512 byte
@@ -49,4 +51,14 @@ while(i < 512) {
     printf("%c", buf[i++]);
 }
 
-// lseek({int}) modifica offset a un certo valore (?)
+// lseek() modifica offset a un certo valore (?)
+// off_t lseek(int fd, off_t offset, int whence)
+// primo parametro fd del file
+// secondo parametro byte di modifica di offset a partire dal terzo parametro (di solito)
+// terzo parametro usa cost simb, setta offset del file a quel valore
+// SEEK_SET viene usata per settare l'offset del file al secondo parametro
+// SEEK_CUR all'offset del file vengono aggiunti offset (secondo parametro) byte
+// SEEK_END viene usata per settare l'offset del file alla fine di esso
+
+// close() serve a liberare risorse riguardanti file e chiuderlo
+// ha come parametro il fd del file
