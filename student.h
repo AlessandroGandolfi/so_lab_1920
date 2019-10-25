@@ -8,13 +8,13 @@ typedef struct _student {
     struct _student *next; // puntatore a studente dopo
 } student;
 
-student *add(student *, student *);
-student *remove(student *, student **);
+student *addStudent(student *, student *);
+student *removeStudent(student *, student **);
 
 // ritorna testa della nuova lista
 // primo parametro riferimento a testa lista attuale
 // secondo parametro riferimento a studente da inserire
-student *add(student *h, student *s) {
+student *addStudent(student *h, student *s) {
     // nuova fine della lista
     s -> next = NULL;
 
@@ -45,7 +45,7 @@ student *add(student *h, student *s) {
 // voglio ritornare un altro valore oltre la testa della lista tramite il return
 // uso puntatore di puntatore, se cambio variabile in funzione cambia anche in funzione che fa la chiamata
 // es: student *a; remove({testa}, &a);
-student *remove(student *h, student **s) {
+student *removeStudent(student *h, student **s) {
     student *temp = NULL; // usato per fare passaggio di testa da primo studente a secondo per poi rimuovere il primo
 
     if(h != NULL) {

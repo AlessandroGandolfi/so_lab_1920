@@ -51,4 +51,6 @@ int main(int argc, char **argv) {
             perror(argv[1]); // stampa a video stringa parametro piú errore "precostruito" generato da ultima chiamata a funzione di lib stdio
     } else
         printf("Usage: test_fopen <pathname>\n");
+
+    return 0;
 }
