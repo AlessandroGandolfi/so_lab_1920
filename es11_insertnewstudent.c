@@ -21,25 +21,27 @@ int main(int argc, char **argv) {
 
         while(students != NULL) {
             if(!flag) {
-                if(students -> matr < newStudent.matr && students -> next -> matr > newStudent.matr) {
-                    newStudent.next = students -> next;
+                if(students -> next != NULL) {
+                    if(students -> matr < newStudent.matr && students -> next -> matr > newStudent.matr) {
+                        newStudent.next = students -> next;
+                        students -> next = &newStudent;
+                        printf("matr %d\n", students -> matr);
+                        flag++;
+
+                        students = students -> next;
+                    } else if(students -> matr > newStudent.matr) {
+                        newStudent.next = students;
+                        students = &newStudent;
+                        printf("matr %d\n", students -> matr);
+                        flag++;
+
+                        students = students -> next;
+                    }
+                } else if(students -> matr < newStudent.matr) {
                     students -> next = &newStudent;
                     printf("matr %d\n", students -> matr);
                     flag++;
-
-                    students = students -> next;
-                } else if(students -> matr > newStudent.matr) {
-                    newStudent.next = students;
-                    students = &newStudent;
-                    printf("matr %d\n", students -> matr);
-                    flag++;
-
-                    students = students -> next;
-                } else if(students -> next == NULL && students -> matr < newStudent.matr) {
-                    students -> next = &newStudent;
-                    printf("matr %d\n", students -> matr);
-                    flag++;
-
+                
                     students = students -> next;
                 }
             }
@@ -67,7 +69,7 @@ student *initStudents(student *studentsList) {
             studentTemp -> mean = i % 2;
             studentTemp -> next = NULL;
             studentsList = addStudent(studentsList, studentTemp);
-        } else { // valorizzazione primo elemento di lista giá presente
+        } else { // valorizzazione primo elemento di lista giá presente a inizializzazione con malloc
             studentsList -> matr = (i + 1) * 10;
             studentsList -> nome = (char *) 65 + i;
             studentsList -> mean = i % 2;
