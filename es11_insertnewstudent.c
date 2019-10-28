@@ -8,9 +8,10 @@ student *initStudents(student *);
 int main(int argc, char **argv) {
 
     if(argc == 4) {
-        int flag = 0;   
+        int addedFlag = 0; // permette di continuare a ciclare per stampare la lista dopo aver aggiunto il nuovo studente, non obbligatorio
         student newStudent;
         student *students = NULL;
+        // senza malloc esplode
         students = (student *) malloc(sizeof(student));
         students = initStudents(students);
         
@@ -20,27 +21,33 @@ int main(int argc, char **argv) {
         newStudent.next = NULL;
 
         while(students != NULL) {
-            if(!flag) {
+            // dopo il primo inserimento non esegue piú i controlli
+            if(!addedFlag) {
+                // se non eseguo questo controllo va in segmentation fault quando punta students -> next -> matr dell'ultimo elemento
                 if(students -> next != NULL) {
+                    // inserimento in mezzo a lista
                     if(students -> matr < newStudent.matr && students -> next -> matr > newStudent.matr) {
                         newStudent.next = students -> next;
                         students -> next = &newStudent;
                         printf("matr %d\n", students -> matr);
-                        flag++;
+                        addedFlag++;
 
                         students = students -> next;
-                    } else if(students -> matr > newStudent.matr) {
+                    // inserimento primo elemento
+                    } else if(students -> matr > newStudent.matr) { 
                         newStudent.next = students;
                         students = &newStudent;
                         printf("matr %d\n", students -> matr);
-                        flag++;
+                        addedFlag++;
 
                         students = students -> next;
                     }
+                // inserimento ultimo elemento
                 } else if(students -> matr < newStudent.matr) {
+                    // non uso addStudent perché ritornerebbe alla testa della lista
                     students -> next = &newStudent;
                     printf("matr %d\n", students -> matr);
-                    flag++;
+                    addedFlag++;
                 
                     students = students -> next;
                 }
@@ -50,7 +57,7 @@ int main(int argc, char **argv) {
             students = students -> next;
         }
 
-        free(students);
+        free(students); // non obbligatoria in quanto la funzione finisce subito dopo
 
     } else
         printf("Usage: es11_insertnewstudent <nome> <matricola> <sesso>\n");
