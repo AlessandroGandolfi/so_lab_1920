@@ -53,4 +53,10 @@ strsignal() restituisce stringa di errore
 
 non-async-signal-safe sono funzioni che se ricevono un segnale durante l'esecuzione possono portare a delle
     problematiche di buffer e sincronizzazione 
+
+sigprocmask(int how, const sigset_t *set, sigset_t *oldset) per impostare maschera di segnali bloccati durante l'esecuzione dei processi
+primo parametro:
+    SIG_UNBLOCK segnali del set rimossi da maschera
+    SIG_BLOCK segnali del set bloccati
+    SIG_SETMASK set diventa nuova maschera
 */
