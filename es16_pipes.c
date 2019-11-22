@@ -14,4 +14,18 @@ i descrittori di lettura si chiudono solo quando quelli di scrittura sono giá s
 
 eof se ci sono solo descrittori in lettura e non in scrittura
 SIGPIPE se ci sono solo descrittori in scrittura e non in lettura
+
+i FIFO sono simili alle pipes e hanno un nome nel file system
+usata per comunicazioni tra proc non imparentati
+vengono usate sc di i/o su estremitá di lettura e scrittura
+dati letti nello stesso ordine in cui sono stati scritti
+
+comando shell per creare una FIFO: mkfifo [ -m mode ] pathname
+se si usa il comando ls -l, le FIFO sono elencate con la prima colonna che comincia con 'p'
+
+funzione di creazione:
+    int mkfifo(const char *pathname, mode_t mode);
+    primo parametro path dove creare FIFO
+    secondo parametro indica i permessi
+l'apertura del FIFO in scrittura si blocca finché un altro processo non apre la FIFO in lettura (sincronizzazione processi)
 */
