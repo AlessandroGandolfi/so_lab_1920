@@ -23,4 +23,7 @@ semop permette di eseguire azioni su piú semafori di uno stesso set/gruppo/arra
     é maggiore di quello del semaforo, serve per sincronizzazione (semctl non é bloccante)
     se anche solo uno dei semafori dell'intero set non puó eseguire l'operazione 
         anche il resto le operazioni sul resto dei semafori vengono bloccate
+
+semtimedop come semop ma il processo resta al massimo un certo periodo (timer) in attesa
+    se il timer scade l'operazione non viene eseguita e il richiamo torna -1 (errno EAGAIN)
 */
