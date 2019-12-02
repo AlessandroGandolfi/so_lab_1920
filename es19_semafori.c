@@ -26,4 +26,7 @@ semop permette di eseguire azioni su piú semafori di uno stesso set/gruppo/arra
 
 semtimedop come semop ma il processo resta al massimo un certo periodo (timer) in attesa
     se il timer scade l'operazione non viene eseguita e il richiamo torna -1 (errno EAGAIN)
+
+per esempio di sincronizzazione ordinata tra processi per progetto guardo 03-test-pipe-round.c 
+    utilizzo token, proc rilascia token a quello successivo con sem_release(s_id, (i == NUM_PROC-1) ? 0 : (i + 1) );
 */

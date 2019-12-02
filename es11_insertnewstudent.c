@@ -60,7 +60,7 @@ int main(int argc, char **argv) {
         free(students); // non obbligatoria in quanto la funzione finisce subito dopo
 
     } else
-        printf("Usage: es11_insertnewstudent <nome> <matricola> <sesso>\n");
+        printf("Usage: es11_insertnewstudent <nome> <matricola> <media>\n");
 
     return 0;
 }
