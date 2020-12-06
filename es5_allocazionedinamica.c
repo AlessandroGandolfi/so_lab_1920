@@ -9,7 +9,7 @@
 #include <errno.h>
 int main() {
     int *buf;   // puntatore generico (void *)
-                // puntatere int (int *)
+                // puntatore int (int *)
     int len = 438;
 
     buf = (int *) malloc(sizeof(int) * len); // buf conterrá indirizzo di memoria di array di 438 interi

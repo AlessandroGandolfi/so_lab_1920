@@ -26,7 +26,7 @@ int fd = open({str pathname}, O_RDONLY);
 // esempio apertura in lettura scrivendo dal fondo del contenuto giá presente
 int fd = open({str pathname}, O_RDONLY | O_APPEND);
 
-// la creat() é l'equivalente di chiamare un open() con i file O_CREAT|O_WRONLY|O_TRUNC
+// la creat() é l'equivalente di chiamare un open() con i flags O_CREAT|O_WRONLY|O_TRUNC
 
 // errori
 // EACCESS accesso al file negato o il file non esiste
