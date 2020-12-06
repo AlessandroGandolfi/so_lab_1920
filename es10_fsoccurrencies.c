@@ -4,9 +4,9 @@
 
 #define NUM_LETTERE ('z' - 'a' + 1)
 // macro
-#define is_uppercase(c) (c >= 65 && c <= 90) // A = 65, Z = 90
-#define is_lowercase(c) (c >= 97 && c <= 122) // a = 97, z = 122
-#define is_whitespace(c) (c == ' ' || c == '\n' || c == '\t') // da usare per occorrenze spazi bianchi
+#define IS_UPPERCASE(c) (c >= 65 && c <= 90) // A = 65, Z = 90
+#define IS_LOWERCASE(c) (c >= 97 && c <= 122) // a = 97, z = 122
+#define IS_WHITESPACE(c) (c == ' ' || c == '\n' || c == '\t') // da usare per occorrenze spazi bianchi
 
 int main(int argc, char **argv) {
     if(argc == 2) {
@@ -19,9 +19,9 @@ int main(int argc, char **argv) {
 
             while((c = getc(fs)) != EOF) {
                 totChars++;
-                if(is_lowercase(c))
+                if(IS_LOWERCASE(c))
                     letterCount[c - 'a']++;
-                else if(is_uppercase(c))
+                else if(IS_UPPERCASE(c))
                     letterCount[c - 'A']++;
             }
 

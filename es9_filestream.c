@@ -27,7 +27,7 @@
 // scrivono un carattere in un fs
 // putc(stdout) = putchar()
 
-// fscaf()
+// fscanf()
 // lettura di una parola da un fs
 
 // fprintf()
@@ -47,6 +47,7 @@ int main(int argc, char **argv) {
 
             printf("\n");
 
+            fclose(fs);
         } else 
             perror(argv[1]); // stampa a video stringa parametro piú errore "precostruito" generato da ultima chiamata a funzione di lib stdio
     } else

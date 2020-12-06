@@ -9,7 +9,7 @@ principali cause:
 sono definiti con nomi simbolici con valore intero unico (SIGxxxx)
 i valori cambiano a seconda delle implementazioni, quindi é raccomandato usare i nomi simbolici
 un segnale viene consegnato ("delivered") ad un processo dopo essere stato generato
-il processo che riceve il segnale esegur qualche azione in risposta al segnale
+il processo che riceve il segnale esegue qualche azione in risposta al segnale
 nel lasso di tempo tra la generazione e la consegna del segnale quest'ultimo é pendente ("pending")
 
 la maschera dei segnali viene assegnata ad un processo e contiene i segnali
@@ -25,7 +25,7 @@ alla ricezione di un segnale possono essere eseguite varie azioni:
     - esecuzione processo ripresa
 
 SIGABRT generato da proc al richiamo di abort()
-SIGALARM generato da kernel al raggiungimento dello 0 di un timer (alarm(), setitimer())
+SIGALRM generato da kernel al raggiungimento dello 0 di un timer (alarm(), setitimer())
 SIGINT termina processo in foreground (ctrl+c)
 SIGKILL kill del processo sicura, termina sempre un processo
 SIGPIPE generato quando un processo tenta di scrivere su un pipe o un FIFO per il quale non c'è un corrispondente processo lettore
@@ -47,7 +47,7 @@ sigaction({segnale}, {punt struttura sigaction nuovo handler}, {punt struttura s
 attributi struct sigaction: handler (punt a funzione), sigset_t sa_mask (maschera segnali), int sa_flags (vari flags per diverse azioni)
 di default il segnale viene "mascherato" quando viene eseguito l'handler (quindi un'esecuzione di handler alla volta per ogni tipo di segnale)
     a meno che non si utilizzi il flag SA_NODEFER (merged signal se tanti segnali di stesso tipo)
-funzioni per settare e modificare maschere: sigemptymask(), sigfillset(), sigaddset(), sigdelset(), sigismember()
+funzioni per settare e modificare maschere: sigemptyset(), sigfillset(), sigaddset(), sigdelset(), sigismember()
 
 strsignal() restituisce stringa di errore
 

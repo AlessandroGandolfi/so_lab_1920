@@ -28,5 +28,5 @@ typedef enum { LUN, MAR, MER, GIO, VEN } weekdays;
 weekdays d;
 
 // esempio enum per un boolean
-typedef enum { true, false } boolean;
+typedef enum { false, true } boolean;
 boolean a = false;

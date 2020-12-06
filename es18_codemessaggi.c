@@ -1,7 +1,7 @@
 /*
-le code di messaggi sono simili ai pipe con 2 differenze:
+le code di messaggi sono simili alle pipe con 2 differenze:
     - i messaggi sono delimitati, i processi comunicano in unitá di messaggi e non stream byte indefiniti
-    - ogni messaggio contiene un attributo di tipo intero che ne definisce il tipo
+    - ogni messaggio contiene un attributo di tipo long che ne definisce il tipo
 
 la comunicazione per mezzo di code di messaggi é message-oriented
 
@@ -21,13 +21,13 @@ int msgget(key_t key, int msgflg)
         IPC_EXCL usata con IPC_CREAT, errore EEXIST se coda giá esistente
 
 msgsnd() scrive un messaggio in un coda di messaggi
-int msgsnd( int msqid, const void *msgp, size_t msgsz, int msgflg)
+int msgsnd(int msqid, const void *msgp, size_t msgsz, int msgflg)
     primo parametro identificatore coda
     secondo parametro puntatore struttura messaggio
     terzo parametro numerto bytes struttura messaggio (senza contare mtype)
     quarto parametro maschera bit per controllo send, solo IPC_NOWAIT definito
 
-msgrcv() prende un messaggio da una coda, riotrna numero di byte copiati in campo mtext
+msgrcv() prende un messaggio da una coda, ritorna numero di byte copiati in campo mtext
 ssize_t msgrcv(int msqid, void *msgp, size_t maxmsgsz, long msgtyp, int msgflg)
     primo parametro identificatore coda
     secondo parametro puntatore struttura messaggio

@@ -12,13 +12,13 @@ ipcs –l --> elenco dei limiti definiti per le risorse IPC
 ipcmk --> crea una nuova risorsa IPC
 ipcrm --> elimina una risorsa IPC
 
-data una key, la sc get del meccanismo ipc usato crea un nuovo oggetto con la key specificata
+data una key, la system call get del meccanismo ipc usato crea un nuovo oggetto con la key specificata
     o restituisce l'identificatore di un oggetto ipc
 
 IPC_EXCL flag per dichiarare quale processo é il creatore dell'oggetto ipc
 nel caso l'oggetto sia giá stato creato la get restituisce l'errore EEXIST
 
-la sc ctl esegue operazioni di controllo sugli oggetti ipc
+la system call ctl esegue operazioni di controllo sugli oggetti ipc
 alcune operazioni sono comuni a tutti gli oggetti mentre altre sono specifiche
 IPC_RMID, comune, cancella l'oggetto
     cancellazione immediata per code messaggi e semafori con relativo contenuto

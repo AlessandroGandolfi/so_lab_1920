@@ -34,10 +34,14 @@ int main() {
         fscanf(fsr, "%s", str);
 
         printf("%s\n", str);
+        
+        fclose(fsr);
     } else { // figlio
         FILE *fsw = fopen("./lista_nomi.txt", "w"); // file resettato ogni volta che viene aperto (w)
 
         fprintf(fsw, "ciao");
+
+        fclose(fsw);
 
         exit(EXIT_SUCCESS);
     }

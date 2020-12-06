@@ -13,7 +13,7 @@ shmget() crea un nuovo segmento di SM o ritorna l'identificatore di un segmento 
     da non usare con puntatori (stesso discorso di accesso a indirizzo di altro processo)
 
 per "dare accesso" dell'area condivisa ad un processo uso l'shmat()
-    execve esegue detach a sua esecuzione, in progetto bisogna fare attach esecuzione execve
+    execve esegue detach a sua esecuzione, in progetto bisogna fare attach dopo esecuzione execve
     figlio eredita id mem condivisa di scacchiera
     torna punt a void, bisogna usare cast (struct shmseg *)
 
